@@ -1,0 +1,34 @@
+choices array ["rock", "paper", "scissors"]
+
+Create function computerPlay
+    Randomly return Rock, Paper, or Scissor. This result will be stored in a computerSelection variable later
+        How do I randomly return non-number items? Could assign RPS to 1, 2, or 3?
+            Math.floor(Math.random() * 4) + 1 to get random number from 1 to 3
+        
+
+
+modulo function to wrap bounds of choices array such that Rock (index 0) beats Scissors (index 2):
+        function mod(a, b) {
+            const c = a % b;
+            return c < 0 ? c + b : c;
+            }
+
+Create a function RPS
+    Compare playerSelection and computerSelection
+        Rock beats Scissors, Scissors beats Paper, Paper beats Rock
+    Determine winner, return winner
+        if choices are the same, return tie
+        if (mod(choice1 - choice2, choices.length) < choices.length / 2)
+            choice 1 wins
+            else, choice 2 wins
+    reset computerSelection
+
+Display winner
+
+Prompt to play again
+    Save player input as playerSelection
+        toLowerCase(Prompt()) to catch capitalized characters
+            choices.indexOf(selection) to return 0, 1, or 2 according to player selection
+
+    if input is QUIT return
+    
