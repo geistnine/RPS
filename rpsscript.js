@@ -21,11 +21,22 @@ function RPS(choice1, choice2){
 }
 
 function game(){
+    let playerScore = 0
+    let cpuScore = 0
     for (let i = 0; i < 5; i++){
         let selection = prompt("Rock, paper, or scissors?").toLowerCase()
         let playerChoice = choices.indexOf(selection)
         let cpuChoice = computerPlay()
-        alert(RPS(playerChoice, cpuChoice))
+        result = RPS(playerChoice, cpuChoice)
+        if (result.includes("win")) playerScore++
+        if (result.includes("lose")) cpuScore++
+        alert(result)
+
+    }
+    if (playerScore > cpuScore) {
+        alert("You won the match, congratulations!")
+    } else {
+        alert("No dice. Better luck next time!")
     }
     return "Thanks for playing!"
 }
