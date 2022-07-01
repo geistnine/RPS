@@ -23,7 +23,7 @@ function RPS(choice1, choice2){
 function game(){
     let playerScore = 0
     let cpuScore = 0
-    for (let i = 0; i < 5; i++){
+    // for (let i = 0; i < 5; i++){
         let selection = prompt("Rock, paper, or scissors?").toLowerCase()
         let playerChoice = choices.indexOf(selection)
         let cpuChoice = computerPlay()
@@ -32,7 +32,7 @@ function game(){
         if (result.includes("lose")) cpuScore++
         alert(result)
 
-    }
+    // }
     if (playerScore > cpuScore) {
         alert("You won the match, congratulations!")
     } else {
@@ -41,4 +41,21 @@ function game(){
     return "Thanks for playing!"
 }
 
-console.log(game())
+const buttons = document.querySelectorAll('button')
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(button.className);
+        let choice2 = computerPlay();
+        let selection = (button.className).toLowerCase();
+        let choice1 = choices.indexOf(selection);
+        // console.log(RPS(choice1, choice2));
+        let para = document.createElement('p')
+        let text = document.createTextNode(RPS(choice1, choice2));
+        para.appendChild(text);
+        let resultsContainer = document.getElementById("results");
+        resultsContainer.appendChild(para);
+    })
+})
+
+
+// console.log(game())
