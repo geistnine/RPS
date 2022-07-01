@@ -63,7 +63,6 @@ buttons.forEach((button) => {
         let choice2 = computerPlay();
         let selection = (button.className).toLowerCase();
         let choice1 = choices.indexOf(selection);
-        // console.log(RPS(choice1, choice2));
         let outcome = RPS(choice1, choice2);
         let para = document.createElement('p')
         let text = document.createTextNode(outcome);
@@ -77,6 +76,3 @@ buttons.forEach((button) => {
 
     })
 })
-
-
-// console.log(game())
