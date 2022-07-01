@@ -20,26 +20,41 @@ function RPS(choice1, choice2){
     }
 }
 
-function game(){
-    let playerScore = 0
-    let cpuScore = 0
-    // for (let i = 0; i < 5; i++){
-        let selection = prompt("Rock, paper, or scissors?").toLowerCase()
-        let playerChoice = choices.indexOf(selection)
-        let cpuChoice = computerPlay()
-        result = RPS(playerChoice, cpuChoice)
-        if (result.includes("win")) playerScore++
-        if (result.includes("lose")) cpuScore++
-        alert(result)
+// function game(){
+//     let playerScore = 0
+//     let cpuScore = 0
+//     // for (let i = 0; i < 5; i++){
+//         let selection = prompt("Rock, paper, or scissors?").toLowerCase()
+//         let playerChoice = choices.indexOf(selection)
+//         let cpuChoice = computerPlay()
+//         result = RPS(playerChoice, cpuChoice)
+//         if (result.includes("win")) playerScore++
+//         if (result.includes("lose")) cpuScore++
+//         alert(result)
 
-    // }
-    if (playerScore > cpuScore) {
-        alert("You won the match, congratulations!")
+//     // }
+//     if (playerScore > cpuScore) {
+//         alert("You won the match, congratulations!")
+//     } else {
+//         alert("No dice. Better luck next time!")
+//     }
+//     return "Thanks for playing!"
+// }
+let playerScore = 0;
+let cpuScore = 0;
+
+function scoreKeeper(result){
+    if (result.includes("draw")) {
+        return;
+    } else if (result.includes("win")){
+        playerScore++;
+        return playerScore;
     } else {
-        alert("No dice. Better luck next time!")
+        cpuScore++;
+        return cpuScore;
     }
-    return "Thanks for playing!"
 }
+// const updateScore = scoreKeeper();
 
 const buttons = document.querySelectorAll('button')
 buttons.forEach((button) => {
@@ -49,11 +64,17 @@ buttons.forEach((button) => {
         let selection = (button.className).toLowerCase();
         let choice1 = choices.indexOf(selection);
         // console.log(RPS(choice1, choice2));
+        let outcome = RPS(choice1, choice2);
         let para = document.createElement('p')
-        let text = document.createTextNode(RPS(choice1, choice2));
+        let text = document.createTextNode(outcome);
         para.appendChild(text);
         let resultsContainer = document.getElementById("results");
         resultsContainer.appendChild(para);
+        scoreKeeper(outcome);
+        let scoreText = document.querySelector(".score")
+        scoreText.innerText = `Player: ${playerScore} Computer: ${cpuScore}`;
+        
+
     })
 })
 

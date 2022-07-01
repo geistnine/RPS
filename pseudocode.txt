@@ -32,3 +32,19 @@ Prompt function to play (again)
 
     if input is QUIT return
     
+in eventlistener
+    save result of RPS function call to a variable
+    call scorekeeper passing in result variable
+        function will increment player or cpu score
+        scorekeeper might need to use closure to keep track of scores
+
+function scorekeeper {
+    let playerScore = 0;
+    let cpuScore = 0;
+    return function() {
+        if (result.includes("draw")) return
+        else if (result.includes "win") playerScore++
+            else cpuScore++
+        return 
+    }
+}
